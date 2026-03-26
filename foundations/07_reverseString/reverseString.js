@@ -1,4 +1,10 @@
-const reverseString = function() {
+const reverseString = function(string) {
+
+    let reverseStringArray = [];
+    reverseStringArray = string.split("");
+    reverseStringArray.reverse();
+
+    return reverseStringArray.join("");
 
 };
 

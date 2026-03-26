@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+        const removeFromArray = function(array, ...args) {
+            // the first argument should be an array and the trailing arguments are what to remove
+            console.log(args.length);
+
+            //return array.toSpliced(array.indexOf(removeChar), 1);
+            //let removedArray =  args[0].toSpliced(args[0].indexOf(args[1]), 1);
+            let removedArray = array.filter(item => item != args[0]);
+
+            if ( args.length > 1 ) {
+
+                for ( let i = 1; i < args.length; i++) {
+                    //removedArray = removedArray.toSpliced(removedArray.indexOf(i), 1);
+                    removedArray = removedArray.filter(item => item != args[i]);
+                }
+                return removedArray;
+
+            } else {
+                return removedArray;
+            }
+
+
+        };
+
+        // A simpler, but more advanced way to do it is to use the 'filter' function,
+        // which basically does what we did with the forEach above.
+        const removeFromArraySolution = function(array, ...args) {
+            return array.filter(val => !args.includes(val))
+        }
+
+        console.log( removeFromArray([1, 2, 3, 4], 3));
+        console.log( removeFromArray([1, 2, 3, 4], 3, 2));
+        console.log( removeFromArray([1, 2, 2, 3], 2));
+        console.log( removeFromArray([1, 2, 3, 4], 7, "tacos"));
+        console.log( removeFromArray([1, 2, 3, 4], 7, 2));
+        console.log( removeFromArray([1, 2, 3, 4], 1, 2, 3, 4));
+        console.log( removeFromArray(["hey", 2, 3, "ho"], "hey", 3));
+        console.log( removeFromArraySolution([1, 2, 3], "1", 3));
+
+    </script>
+    
+</body>
+</html>
